@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포스엘엔에스 | WMS · WCS · ECS</title>
+    <meta
+      name="description"
+      content="실시간 물류 흐름을 제어하는 스마트 시스템. WMS·WCS·ECS로 재고·작업·설비를 연결하고 AGV·AS/RS·Sorter 등 자동화 설비와 통합 제어하며 물류센터 운영을 함께 설계합니다."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css?v=70" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="#home" class="site-header__logo">
+          <img src="./assets/logo-eng.png?v=5" alt="FLNS" />
+        </a>
+        <button type="button" class="site-header__toggle" id="menuBtn" aria-expanded="false" aria-controls="siteNav" aria-label="메뉴 열기">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" id="siteNav" aria-label="주 메뉴">
+          <a href="#about">회사소개</a>
+          <a href="#scope">사업 영역</a>
+          <a href="#solutions">솔루션</a>
+          <a href="#capabilities">구축 역량</a>
+          <a href="#approach">협업 방식</a>
+          <a href="#faq">문의 안내</a>
+          <a href="#contact" class="site-nav__cta">문의</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero-carousel" aria-roledescription="carousel" aria-label="메인 비주얼">
+        <div class="hero-carousel__slides" id="heroSlides">
+          <!-- 히어로 1 배경: assets/hiro_3.png -->
+          <article class="hero-slide hero-slide--photo-bg is-active" data-slide="0">
+            <div class="hero-slide__photo" aria-hidden="true">
+              <img
+                class="hero-slide__photo-img"
+                src="./assets/hiro_3.png?v=1"
+                alt=""
+                width="1920"
+                height="1080"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+            <div class="hero-slide__scrim" aria-hidden="true"></div>
+            <div class="hero-slide__content">
+              <p class="hero-slide__kicker">설비 · 자동창고</p>
+              <h1 class="hero-slide__title-en">
+                Stackers to lines,<br />one rulebook<br />end to end.
+              </h1>
+              <p class="hero-slide__title-ko">
+                스태커·컨베이어까지 같은 실행 규칙으로,<br />입출고가 끊기지 않게 장비 동작을 맞춥니다
+              </p>
+              <a href="#about" class="hero-slide__link">회사소개</a>
+            </div>
+          </article>
+
+          <article class="hero-slide" data-slide="1">
+            <video class="hero-slide__video" muted loop playsinline preload="metadata">
+              <source src="./assets/hero-video.mp4?v=36" type="video/mp4" />
+            </video>
+            <div class="hero-slide__scrim" aria-hidden="true"></div>
+            <div class="hero-slide__content">
+              <p class="hero-slide__kicker">스마트 물류</p>
+              <h1 class="hero-slide__title-en">
+                Live logistics<br />under control<br />one platform.
+              </h1>
+              <p class="hero-slide__title-ko">
+                실시간 물류 흐름을 제어하는 스마트 시스템<br />재고 · 작업 · 설비를 하나의 플랫폼으로
+              </p>
+              <a href="#contact" class="hero-slide__link">도입 상담</a>
+            </div>
+          </article>
+
+          <!-- 히어로 3 배경: assets/cinematic_realistic_logistics_warehouse_at_dawn,...mp4 -->
+          <article class="hero-slide" data-slide="2">
+            <video class="hero-slide__video" muted loop playsinline preload="metadata">
+              <source
+                src="./assets/cinematic_realistic_logistics_warehouse_at_dawn,_wet_asphalt_reflection,_trucks_parked_at_dock,_conv_seed963855808.mp4?v=1"
+                type="video/mp4"
+              />
+            </video>
+            <div class="hero-slide__scrim" aria-hidden="true"></div>
+            <div class="hero-slide__content">
+              <p class="hero-slide__kicker">WMS · WCS · ECS</p>
+              <h1 class="hero-slide__title-en">
+                Plans meet signals<br />on the floor<br />in one stream.
+              </h1>
+              <p class="hero-slide__title-ko">
+                상위 계획과 장비 신호가 같은 박자로 움직이도록,<br />WMS·WCS·ECS가 재고·작업·설비를 한 실행 허브에 묶습니다
+              </p>
+              <a href="#solutions" class="hero-slide__link">솔루션 보기</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="hero-carousel__controls">
+          <button type="button" class="hero-carousel__btn" id="heroPrev" aria-label="이전 슬라이드">Previous</button>
+          <button type="button" class="hero-carousel__btn" id="heroNext" aria-label="다음 슬라이드">Next</button>
+        </div>
+        <div class="hero-carousel__dots" id="heroDots" role="tablist" aria-label="슬라이드 선택"></div>
+      </section>
+
+      <div class="trust-bar" aria-label="포스엘엔에스 요약">
+        <div class="trust-bar__inner">
+          <div class="trust-bar__item">
+            <strong>한 플랫폼 실행</strong>
+            <span>재고·작업·설비를 WMS·WCS·ECS로 묶어 실시간 제어</span>
+          </div>
+          <div class="trust-bar__item">
+            <strong>End-to-End</strong>
+            <span>분석부터 운영 튜닝까지 동일 팀</span>
+          </div>
+          <div class="trust-bar__item">
+            <strong>현장 중심</strong>
+            <span>오픈·피크 시즌 대응을 전제로 한 이관</span>
+          </div>
+          <div class="trust-bar__item">
+            <strong>지속 파트너</strong>
+            <span>장비 변경·상위 개편 시에도 동행</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="about" class="company-intro" aria-labelledby="company-intro-heading">
+        <div class="company-intro__inner">
+          <header class="company-intro__head">
+            <h2 id="company-intro-heading">회사 소개</h2>
+          </header>
+          <div class="company-intro__body">
+            <p>
+              당사는 물류 운영 시스템(WMS), 창고 제어(WCS), 설비 제어(ECS) 및 이에 준하는 실행 계층(MCS 등) 구축 전문 기업입니다.
+            </p>
+            <p>
+              입고, 출고, 재고관리부터 자동화 설비 연동 및 실시간 제어까지 물류센터 운영 전반에 최적화된 통합
+              솔루션을 제공합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-message" class="statement">
+        <div class="statement__inner">
+          <p class="statement__en">Live flow. One platform.</p>
+          <p class="statement__ko">
+            실시간 물류 흐름을 제어하는 스마트 시스템을 지향합니다.<br class="statement__br" />
+            포스엘엔에스는 WMS·WCS·ECS로 재고·작업·설비를 하나의 실행 허브에서 굴립니다.
+          </p>
+        </div>
+      </section>
+
+      <section id="scope" class="scope-section" aria-labelledby="scope-heading">
+        <div class="scope-section__inner">
+          <header class="section-head">
+            <h2 id="scope-heading">사업 영역</h2>
+            <p class="section-head__lede">
+              소프트웨어 라이선스만 넘기는 구조가 아니라, 현장이 굴러가는 순간까지 책임지는 범위를 넓게 잡습니다.
+            </p>
+          </header>
+          <ul class="scope-grid">
+            <li class="scope-card">
+              <h3>요구·인터페이스 정의</h3>
+              <p>상위 WMS/MES, 장비 벤더, 운영 규칙을 한 표로 묶어 갭을 줄입니다.</p>
+            </li>
+            <li class="scope-card">
+              <h3>통합 구축</h3>
+              <p>WMS·WCS·ECS, 모니터링, 알람·로그 표준을 묶어 단일 실행 허브로 올립니다.</p>
+            </li>
+            <li class="scope-card">
+              <h3>시운전 · 오픈 지원</h3>
+              <p>라인 단위 컷오버, 롤백 시나리오, 야간 전환까지 현장 일정에 맞춥니다.</p>
+            </li>
+            <li class="scope-card">
+              <h3>운영 모니터링</h3>
+              <p>장비·작업·인터페이스 지연을 한 대시에서 보이게 구성합니다.</p>
+            </li>
+            <li class="scope-card">
+              <h3>성능 · 안정화</h3>
+              <p>피크·프로모션 구간을 겨냥한 튜닝과 장애 재발 방지 패치를 지원합니다.</p>
+            </li>
+            <li class="scope-card">
+              <h3>교육 · 인수인계</h3>
+              <p>운영·IT·현장 리더별 매뉴얼과 핸드오프 체크리스트를 맞춤 제공합니다.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="solutions" class="product-showcase" aria-labelledby="solutions-heading">
+        <h2 id="solutions-heading" class="visually-hidden">솔루션</h2>
+
+        <article class="product-panel" id="wms">
+          <div class="product-panel__visual product-panel__visual--wms">
+            <img
+              src="./assets/wes-visual.jpg?v=1"
+              alt="창고에서 재고와 작업이 관리되는 현장"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="product-panel__body">
+            <h3 class="product-panel__title">WMS</h3>
+            <p class="product-panel__sub">Warehouse Management System</p>
+            <p class="product-panel__desc">
+              실시간 재고·작업 관리로 물류 운영 효율을 높이는 통합 창고관리 시스템입니다.
+            </p>
+            <a href="solutions-detail.html#wms" class="product-panel__more">더 알아보기</a>
+          </div>
+        </article>
+
+        <article class="product-panel product-panel--reverse" id="wcs">
+          <div class="product-panel__body">
+            <h3 class="product-panel__title">WCS</h3>
+            <p class="product-panel__sub">Warehouse Control System</p>
+            <p class="product-panel__desc">
+              컨베이어·로봇·AS/RS 등 물리 장비를 실시간으로 제어하고, 이상 징후를
+              빠르게 감지·대응합니다.
+            </p>
+            <a href="solutions-detail.html#wcs" class="product-panel__more">더 알아보기</a>
+          </div>
+          <div class="product-panel__visual product-panel__visual--wcs">
+            <img
+              src="./assets/wcs-visual.jpg?v=2"
+              alt="물류센터의 컨베이어와 자동 보관 시스템 장비"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </article>
+
+        <article class="product-panel" id="ecs">
+          <div class="product-panel__visual product-panel__visual--ecs">
+            <img
+              src="./assets/ecs-visual.png?v=1"
+              alt="자동창고·셔틀·컨베이어가 연동된 물류 설비 제어 현장"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="product-panel__body">
+            <h3 class="product-panel__title">ECS</h3>
+            <p class="product-panel__sub">Equipment Control System</p>
+            <p class="product-panel__desc">
+              WCS의 명령을 설비·존 단위 신호로 매핑하고, PLC·구동기·센서와 직접 맞물려 모션과 안전 인터록을
+              다룹니다.
+            </p>
+            <a href="solutions-detail.html#ecs" class="product-panel__more">더 알아보기</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="capabilities" class="experience-section" aria-labelledby="capabilities-heading">
+        <div id="experience" class="experience-section__legacy-anchor" aria-hidden="true"></div>
+        <div class="experience-section__inner">
+          <header class="section-head">
+            <p class="experience-section__eyebrow">물류 자동화 · 통합 제어</p>
+            <h2 id="capabilities-heading">설비 연동 및 통합 제어 역량</h2>
+            <p class="section-head__lede experience-section__tagline">
+              WMS·WCS·ECS와 맞물리는 자동화 설비 범위를 넓게 다루며, 현장 실행까지 이어지는 통합 제어를 지향합니다.
+            </p>
+          </header>
+
+          <p class="experience-section__lead">
+            포스엘엔에스는 상위 재고·작업 계획과 설비 신호가 같은 흐름으로 움직이도록 인터페이스·제어·모니터링을 한 축으로
+            묶습니다.
+          </p>
+          <p class="experience-section__lead">
+            오픈 이후에도 장비 교체, 라인 증설, 상위 시스템 개편이 있어도 끊기지 않게 설계·전개하는 것을 전제로 합니다.
+          </p>
+
+          <div class="experience-highlight">
+            <p class="experience-highlight__strong">
+              자동화 설비와 물류 운영을 잇는 실행 허브
+            </p>
+            <p class="experience-highlight__text">
+              AS/RS · GEEK+ AMR · VLM · Conveyor · Sorter · AGV 등 주요 설비군에 대해 WMS·WCS·ECS 관점의 연동·제어·가시화 범위를
+              갖추고, 도입 목적에 맞는 통합 구성을 제안합니다.
+            </p>
+          </div>
+
+          <h3 class="experience-subhead">주요 연동 설비</h3>
+          <ul class="experience-equip-grid">
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">AGV</h4>
+              <p class="experience-equip-card__sub">Automated Guided Vehicle</p>
+              <p class="experience-equip-card__desc">상위 시스템·WCS·ECS와 연동한 작업 지시·경로·상태 관제</p>
+            </li>
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">Sorter System</h4>
+              <p class="experience-equip-card__sub">자동 분류</p>
+              <p class="experience-equip-card__desc">분류 목적지·추적·Jam 대응을 포함한 라인 제어</p>
+            </li>
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">Conveyor System</h4>
+              <p class="experience-equip-card__sub">자동 이송 라인</p>
+              <p class="experience-equip-card__desc">라우팅·모션·센서 이벤트 기반 이송 흐름 제어</p>
+            </li>
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">VLM</h4>
+              <p class="experience-equip-card__sub">Vertical Lift Module</p>
+              <p class="experience-equip-card__desc">Tray 입출고·재고 위치·설비 상태를 묶은 제어 인터페이스</p>
+            </li>
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">GEEK+ AMR</h4>
+              <p class="experience-equip-card__sub">자율주행 로봇</p>
+              <p class="experience-equip-card__desc">작업 큐·트래픽·로봇 상태를 고려한 연동 제어</p>
+            </li>
+            <li class="experience-equip-card">
+              <h4 class="experience-equip-card__title">AS/RS</h4>
+              <p class="experience-equip-card__sub">Automated Storage &amp; Retrieval System</p>
+              <p class="experience-equip-card__desc">크레인·입출고·재고 위치와 연계한 스케줄·모니터링</p>
+            </li>
+          </ul>
+
+          <h3 class="experience-subhead">핵심 기술 역량</h3>
+          <ul class="experience-cap-list">
+            <li>WMS·WCS·ECS 기반 자동화 설비 통합 제어</li>
+            <li>실시간 물류 흐름 제어 및 최적화</li>
+            <li>자동화 설비 인터페이스 구축</li>
+            <li>운영 모니터링 및 장애 대응 시스템</li>
+            <li>스마트 물류센터 통합 운영 플랫폼 구축</li>
+            <li>AS/RS · AMR · VLM · Conveyor · Sorter · AGV 통합 제어 기술 보유</li>
+          </ul>
+
+          <div class="experience-detail-grid" aria-label="설비별 제어·연동 범위 요약">
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">AS/RS</h4>
+              <ul>
+                <li>Crane 제어 및 스케줄링</li>
+                <li>자동 입출고 제어</li>
+                <li>Location 및 재고 관리</li>
+                <li>실시간 상태 모니터링</li>
+                <li>WMS·WCS·ECS 연동</li>
+              </ul>
+            </div>
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">GEEK+ AMR</h4>
+              <ul>
+                <li>Geek+ AMR WCS Interface 구축</li>
+                <li>입고 적치(Putaway) 자동화 연동</li>
+                <li>Picking Order 및 재고 이동 인터페이스</li>
+                <li>Cycle Count / Stock Take 재고 실사 기능 구축</li>
+                <li>실시간 재고 관리 시스템 연동</li>
+              </ul>
+            </div>
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">VLM</h4>
+              <ul>
+                <li>WCS·ECS 인터페이스 구축</li>
+                <li>자동 Tray 입출고 제어</li>
+                <li>작업 요청 인터페이스</li>
+                <li>재고 및 Location 관리</li>
+                <li>운영 모니터링 시스템 구축</li>
+              </ul>
+            </div>
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">Sorter System</h4>
+              <ul>
+                <li>이송 및 분배 제어</li>
+                <li>Barcode Tracking</li>
+                <li>실시간 흐름 모니터링</li>
+                <li>Jam 및 장애 대응 로직</li>
+                <li>설비 연동 인터페이스 구축</li>
+              </ul>
+            </div>
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">Conveyor System</h4>
+              <ul>
+                <li>목적지 기반 자동 분류</li>
+                <li>실시간 Routing 제어</li>
+                <li>Tracking 및 물류 추적</li>
+                <li>작업 최적화 및 운영 모니터링</li>
+              </ul>
+            </div>
+            <div class="experience-detail-col">
+              <h4 class="experience-detail-col__title">AGV</h4>
+              <ul>
+                <li>AGV Task 제어</li>
+                <li>경로 및 충돌 관리</li>
+                <li>실시간 위치 추적</li>
+                <li>자동 작업 연계 및 스케줄링</li>
+                <li>통합 운영 모니터링</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-addendum">
+            <p>
+              설비 벤더·운영 규칙·상위 시스템이 달라도 동일한 실행 허브 안에서 맞춤 인터페이스와 제어 정책으로 수렴시키는
+              것을 목표로 합니다.
+            </p>
+          </div>
+
+          <div class="experience-media">
+            <figure class="experience-media__item">
+              <div class="experience-media__frame experience-media__frame--still">
+                <img
+                  src="./assets/26206e58-c257-46ad-9b29-773ccd74bbd9.png?v=1"
+                  alt="자동창고(AS/RS) 운영 환경 개념 이미지"
+                  width="1920"
+                  height="1080"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="experience-media__caption">KADEX VLM· 개념 참고 이미지 (실제 구축 사례와 다를 수 있습니다)</figcaption>
+            </figure>
+            <figure class="experience-media__item">
+              <div class="experience-media__frame experience-media__frame--video">
+                <video controls playsinline preload="metadata" title="무인 이송(AGV) 운영 개념 참고 영상">
+                  <source src="./assets/agv-warehouse-firefly.mp4?v=1" type="video/mp4" />
+                </video>
+              </div>
+              <figcaption class="experience-media__caption">AGV · 개념 참고 영상</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="industry-strip">
+        <div class="industry-strip__inner">
+          <span>적용 산업</span>
+          <ul>
+            <li>물류센터</li>
+            <li>제조</li>
+            <li>제약 · 바이오</li>
+            <li>의류</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="promise-band" aria-labelledby="promise-heading">
+        <div class="promise-band__inner">
+          <div class="promise-band__copy">
+            <p class="promise-band__eyebrow">Quality of execution</p>
+            <h2 id="promise-heading">설비만 바꾸는 프로젝트가 아닙니다</h2>
+            <p class="promise-band__text">
+              카탈로그를 넓게 펼치는 대신, 실행 계층 하나를 깊게 파고듭니다. 대신 화면·장비·상위가 어긋나지 않게
+              끝까지 맞춥니다.
+            </p>
+          </div>
+          <ul class="promise-band__list">
+            <li>표준 인터페이스보다 <strong>현장 예외</strong>를 먼저 적습니다.</li>
+            <li>오픈 당일이 아니라 <strong>90일·180일</strong> 운영 곡선을 같이 봅니다.</li>
+            <li>문서화된 설계안과 <strong>실제 로그</strong>가 일치하는지 검증합니다.</li>
+            <li>벤더 RFP에 맞춘 데모가 아니라 <strong>고객 KPI</strong>에 맞춘 데모를 준비합니다.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="values" class="value-section" aria-labelledby="values-heading">
+        <div class="value-section__inner">
+          <header class="section-head section-head--center">
+            <h2 id="values-heading">핵심 가치</h2>
+            <p class="section-head__lede">짧은 주기로 피드백을 받고, 범위를 키우기보다 실행을 단단히 고정합니다.</p>
+          </header>
+          <div class="value-trio">
+            <article class="value-card">
+              <span class="value-card__mark">01</span>
+              <h3>투명한 범위</h3>
+              <p>장비 제어, 상위 연동, 운영 UI를 나누어 견적과 일정의 기준을 명확히 합니다.</p>
+            </article>
+            <article class="value-card">
+              <span class="value-card__mark">02</span>
+              <h3>동일 책임</h3>
+              <p>설계·개발·현장이 다른 조직으로 갈리지 않게, 한 팀이 끝까지 따라갑니다.</p>
+            </article>
+            <article class="value-card">
+              <span class="value-card__mark">03</span>
+              <h3>운영 친화</h3>
+              <p>개발자 전용 툴이 아니라, 야간 담당자가 바로 조치할 수 있는 화면을 지향합니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach" class="approach-section" aria-labelledby="approach-heading">
+        <div class="approach-section__inner">
+          <h2 id="approach-heading">프로젝트는 이렇게 함께합니다</h2>
+          <p class="approach-section__lede">
+            현장 실행과 상위 시스템이 맞물리는 순서를 기준으로, 함께 밟는 단계입니다.
+          </p>
+          <ol class="approach-steps">
+            <li class="approach-step">
+              <span class="approach-step__num" aria-hidden="true">01</span>
+              <h3>범위와 인터페이스 정리</h3>
+              <p>장비·상위·운영 규칙이 만나는 지점을 먼저 고정해, 이후 변경 비용을 줄입니다.</p>
+            </li>
+            <li class="approach-step">
+              <span class="approach-step__num" aria-hidden="true">02</span>
+              <h3>실행 설계와 시뮬레이션</h3>
+              <p>WMS 작업·재고 흐름과 WCS·ECS 장비 신호 순서를 맞추고, 병목·예외 시나리오를 짧은 주기로 검증합니다.</p>
+            </li>
+            <li class="approach-step">
+              <span class="approach-step__num" aria-hidden="true">03</span>
+              <h3>통합 구축과 현장 적응</h3>
+              <p>라인 단위로 올리며 모니터링·알람을 함께 맞춰, 오픈 직후 공백이 생기지 않게 합니다.</p>
+            </li>
+            <li class="approach-step">
+              <span class="approach-step__num" aria-hidden="true">04</span>
+              <h3>운영 이관과 튜닝</h3>
+              <p>담당자 인수인계 후에도 피크·설비 변경에 맞춰 실행 파라미터를 조정합니다.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="formats" class="formats-section" aria-labelledby="formats-heading">
+        <div class="formats-section__inner">
+          <header class="section-head">
+            <h2 id="formats-heading">도입 형태</h2>
+            <p class="section-head__lede">규모와 성숙도에 맞춰, 한 번에 올리거나 단계적으로 확장할 수 있습니다.</p>
+          </header>
+          <div class="formats-row">
+            <article class="format-card">
+              <h3>그린필드 허브</h3>
+              <p>신규 센터·라인에 WMS·WCS·ECS를 함께 얹고, 장비 납품 일정에 맞춰 마일스톤을 쪼갭니다.</p>
+            </article>
+            <article class="format-card">
+              <h3>브라운필드 고도화</h3>
+              <p>기존 상위·장비를 유지한 채 실행 계층만 교체하거나, 구간별로 순차 전환합니다.</p>
+            </article>
+            <article class="format-card">
+              <h3>운영 중 튜닝</h3>
+              <p>이미 돌아가는 시스템에 병목 구간만 집중 투입해, 중단 시간을 최소화합니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq-section" aria-labelledby="faq-heading">
+        <div class="faq-section__inner">
+          <header class="section-head">
+            <h2 id="faq-heading">문의 전에 보시면 좋은 질문</h2>
+            <p class="section-head__lede">미팅 시간을 아끼기 위해, 자주 오가는 질문만 짧게 정리했습니다.</p>
+          </header>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>도입 범위는 어디까지 포함되나요?</summary>
+              <p>요구 정의부터 운영 이관까지 전 구간을 다룰 수도 있고, 실행 계층과 인터페이스에만 집중할 수도 있습니다. 현재 인력과 장비 상태를 알려주시면 최소·권장 범위를 나누어 제안합니다.</p>
+            </details>
+            <details class="faq-item">
+              <summary>상위 WMS/MES가 이미 있는데도 필요한가요?</summary>
+              <p>상위가 주문(OMS)과 재고(WMS, ERP)를 담당하고, WMS·WCS·ECS는 현장 실행·설비 동기를 맡는 구조가 가장 흔합니다. 기존 벤더와의 역할 분담만 정리되면 연동 설계를 바로 시작할 수 있습니다.</p>
+            </details>
+            <details class="faq-item">
+              <summary>운영 중인 센터(브라운필드)도 도입할 수 있나요?</summary>
+              <p>가능합니다. 상위·장비를 유지한 채 WMS·WCS·ECS 실행 계층만 교체하거나, 구간별로 순차 전환해 가동 중단을 줄이는 방식으로 진행할 수 있습니다. 현재 운영 방식과 설비 목록을 알려주시면 전환 순서를 함께 잡습니다.</p>
+            </details>
+            <details class="faq-item">
+              <summary>오픈 이후 지원이 되나요?</summary>
+              <p>장애 대응 SLA, 정기 튜닝, 피크 시즌 대비 리허설 중 필요한 형태를 선택할 수 있습니다. 문의 폼에 희망 형태를 적어 주시면 됩니다.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-strip" aria-label="도입 상담 유도">
+        <div class="cta-strip__inner">
+          <div>
+            <h2 class="cta-strip__title">프로젝트 이야기를 들려주세요</h2>
+            <p class="cta-strip__text">규모가 정해지지 않았어도 괜찮습니다. 범위를 같이 좁혀 보겠습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-block">
+        <div class="contact-block__inner">
+          <div class="contact-block__intro">
+            <h2>고객 문의</h2>
+            <p>
+              자동화 범위와 일정을 알려주시면 검토 후 연락드립니다.
+            </p>
+            <p class="contact-block__mail">wsseo@flns.co.kr</p>
+          </div>
+          <form
+            id="contactForm"
+            class="contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+            <input type="hidden" name="access_key" id="web3formsAccessKey" value="" autocomplete="off" />
+            <input type="hidden" name="subject" value="[FLNS] 홈페이지 도입문의 접수" />
+            <input type="text" name="company" placeholder="회사명" required />
+            <input type="text" name="manager" placeholder="담당자" required />
+            <input type="tel" name="phone" placeholder="연락처" required />
+            <input type="email" name="email" placeholder="이메일" required />
+            <select name="interest" required>
+              <option value="">관심 제품 선택</option>
+              <option>WMS</option>
+              <option>WCS</option>
+              <option>ECS</option>
+              <option>WMS + WCS</option>
+              <option>WMS + WCS + ECS</option>
+              <option>기타</option>
+            </select>
+            <textarea rows="4" name="message" placeholder="문의 내용" required></textarea>
+            <button type="submit" class="contact-form__submit">작성</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="./assets/logo-kor.png?v=6" alt="포스엘엔에스" class="site-footer__logo" />
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <p class="site-footer__label">회사</p>
+            <a href="#about">회사소개</a>
+            <a href="#scope">사업 영역</a>
+            <a href="#solutions">솔루션</a>
+            <a href="#capabilities">구축 역량</a>
+          </div>
+          <div>
+            <p class="site-footer__label">지원</p>
+            <a href="#values">핵심 가치</a>
+            <a href="#approach">협업 방식</a>
+            <a href="#formats">도입 형태</a>
+            <a href="#faq">문의 안내</a>
+            <a href="#contact">고객문의</a>
+          </div>
+          <div>
+            <p class="site-footer__label">연락처</p>
+            <p>대표 서원식</p>
+            <p>wsseo@flns.co.kr</p>
+            <p>서울특별시 영등포구 영등포로13길 21 707-8</p>
+            <p>사업자등록번호 661-87-01066</p>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">Copyright © 포스엘엔에스. All rights reserved.</p>
+    </footer>
+
+    <script src="./web3forms-key.js?v=2"></script>
+    <script src="./script.js?v=68"></script>
+  </body>
+</html>
