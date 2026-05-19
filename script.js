@@ -91,20 +91,7 @@
 
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    const keyInput = document.getElementById("web3formsAccessKey");
-    const k =
-      typeof window.WEB3FORMS_ACCESS_KEY === "string" ? window.WEB3FORMS_ACCESS_KEY.trim() : "";
-    if (keyInput && k) {
-      keyInput.value = k;
-    }
     contactForm.addEventListener("submit", async (e) => {
-      if (!keyInput || !keyInput.value.trim()) {
-        e.preventDefault();
-        window.alert(
-          "문의 전송이 아직 연결되지 않았습니다.\n\nweb3forms-key.js 파일을 열고 WEB3FORMS_ACCESS_KEY에 키를 넣어 주세요.\n(무료 발급: https://web3forms.com)"
-        );
-        return;
-      }
       e.preventDefault();
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const prevLabel = submitBtn ? submitBtn.textContent : "";
@@ -113,8 +100,13 @@
         submitBtn.textContent = "전송 중…";
       }
       const thanksUrl = new URL("thank-you.html", window.location.href).href;
+      const payload = Object.fromEntries(new FormData(contactForm).entries());
       try {
-        const res = await fetch(contactForm.action, { method: "POST", body: new FormData(contactForm) });
+        const res = await fetch("/.netlify/functions/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
         const data = await res.json().catch(() => ({}));
         if (data && data.success === true) {
           window.location.assign(thanksUrl);
@@ -124,7 +116,9 @@
           (data && data.message) || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요."
         );
       } catch {
-        window.alert("네트워크 오류입니다. 연결을 확인한 뒤 다시 시도해 주세요.");
+        window.alert(
+          "네트워크 오류입니다. Netlify에 배포된 주소에서 다시 시도해 주세요.\n(로컬 파일로 열면 문의 전송이 되지 않을 수 있습니다.)"
+        );
       }
       if (submitBtn) {
         submitBtn.disabled = false;
