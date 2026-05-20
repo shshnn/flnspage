@@ -588,7 +588,19 @@
             </p>
             <p class="contact-block__mail">wsseo@flns.co.kr</p>
           </div>
-          <form id="contactForm" class="contact-form" action="#" method="POST">
+          <form
+            id="contactForm"
+            name="contact"
+            class="contact-form"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/thank-you.html"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="contact-form__honeypot" hidden>
+              <label>이 필드는 비워 두세요<input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
             <input type="hidden" name="subject" value="[FLNS] 홈페이지 도입문의 접수" />
             <input type="text" name="company" placeholder="회사명" required />
             <input type="text" name="manager" placeholder="담당자" required />
@@ -643,6 +655,6 @@
       <p class="site-footer__copy">Copyright © 포스엘엔에스. All rights reserved.</p>
     </footer>
 
-    <script src="./script.js?v=71"></script>
+    <script src="./script.js?v=73"></script>
   </body>
 </html>

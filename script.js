@@ -100,36 +100,21 @@
         submitBtn.textContent = "전송 중…";
       }
       const thanksUrl = new URL("thank-you.html", window.location.href).href;
-      const payload = Object.fromEntries(new FormData(contactForm).entries());
+      const formData = new FormData(contactForm);
+      formData.set("form-name", "contact");
       try {
-        const res = await fetch("/.netlify/functions/contact", {
+        const res = await fetch("/", {
           method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload),
+          body: formData,
         });
-        const data = await res.json().catch(() => ({}));
-        if (res.status === 404) {
-          window.alert(
-            "문의 API를 찾을 수 없습니다. Netlify에 Functions가 배포됐는지 확인해 주세요."
-          );
-          return;
-        }
-        if (res.status === 403 && !data.message) {
-          window.alert(
-            "접근이 거부되었습니다. Netlify 사이트 비밀번호 보호를 끄거나, Functions·환경변수 설정을 확인해 주세요."
-          );
-          return;
-        }
-        if (data && data.success === true) {
+        if (res.ok) {
           window.location.assign(thanksUrl);
           return;
         }
-        window.alert(
-          (data && data.message) || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요."
-        );
+        window.alert("전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       } catch {
         window.alert(
-          "네트워크 오류입니다. Netlify에 배포된 주소에서 다시 시도해 주세요.\n(로컬 파일로 열면 문의 전송이 되지 않을 수 있습니다.)"
+          "네트워크 오류입니다. https://flns.netlify.app 에서 다시 시도해 주세요."
         );
       }
       if (submitBtn) {
