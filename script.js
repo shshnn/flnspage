@@ -108,6 +108,18 @@
           body: JSON.stringify(payload),
         });
         const data = await res.json().catch(() => ({}));
+        if (res.status === 404) {
+          window.alert(
+            "문의 API를 찾을 수 없습니다. Netlify에 Functions가 배포됐는지 확인해 주세요."
+          );
+          return;
+        }
+        if (res.status === 403 && !data.message) {
+          window.alert(
+            "접근이 거부되었습니다. Netlify 사이트 비밀번호 보호를 끄거나, Functions·환경변수 설정을 확인해 주세요."
+          );
+          return;
+        }
         if (data && data.success === true) {
           window.location.assign(thanksUrl);
           return;

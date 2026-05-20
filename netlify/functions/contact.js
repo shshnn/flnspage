@@ -62,8 +62,19 @@ exports.handler = async (event) => {
     });
 
     const data = await upstream.json().catch(() => ({}));
+    if (!upstream.ok) {
+      const hint =
+        upstream.status === 403
+          ? "Web3Forms에서 거부되었습니다. 허용 도메인에 flns.netlify.app 을 추가했는지, Netlify 환경변수 WEB3FORMS_ACCESS_KEY가 맞는지 확인해 주세요."
+          : data.message || `전송 서버 오류 (${upstream.status})`;
+      return {
+        statusCode: 200,
+        headers: jsonHeaders,
+        body: JSON.stringify({ success: false, message: hint }),
+      };
+    }
     return {
-      statusCode: upstream.ok ? 200 : upstream.status,
+      statusCode: 200,
       headers: jsonHeaders,
       body: JSON.stringify(data),
     };
