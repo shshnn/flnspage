@@ -1,0 +1,5 @@
+# https://flns.co.kr — 포스엘엔에스
+User-agent: *
+Allow: /
+
+Sitemap: https://flns.co.kr/sitemap.xml
