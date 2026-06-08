@@ -1,4 +1,4 @@
-# https://flns.co.kr — 포스엘엔에스
+# https://flns.co.kr — 포스엘앤에스
 User-agent: *
 Allow: /
 
